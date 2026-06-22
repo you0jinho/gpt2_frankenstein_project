@@ -31,11 +31,7 @@
 | 2800 | 3.32e-05 | 1.2358 | 1.3857 |
 | 2999 | 3.00e-05 | 1.2269 | 1.3844 |
 
-> `loss_curve.png`(Colab에서 자동 생성된 그래프 파일)를 다운로드해서 이
-> 문서와 같은 폴더에 넣으면, 아래 줄로 GitHub에서 그래프가 바로 보입니다.
-> ```
-> ![training curve](loss_curve.png)
-> ```
+<img width="691" height="470" alt="real gpt curv" src="https://github.com/user-attachments/assets/83b0ea32-bee0-460f-8057-01ec99d0fd7e" />
 
 ## 최종 결과
 
