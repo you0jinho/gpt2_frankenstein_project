@@ -283,16 +283,7 @@ python notebook_07_gpt2.py
 올라가지 않습니다 (스크립트를 다시 돌리면 똑같이 재생성되기 때문). `loss_curve.png`는
 README에 첨부할 용도라 그대로 커밋하면 됩니다.
 
-### 6. GitHub에 올리기
 
-```bash
-git init                      # 아직 git repo가 아니라면
-git add .
-git commit -m "GPT 2.0: TinyGPT를 Frankenstein 데이터셋으로 학습"
-git branch -M main
-git remote add origin <자신의 GitHub repo 주소>
-git push -u origin main
-```
 
 ---
 
@@ -320,67 +311,111 @@ MAX_STEPS_PER_EPOCH = 200  # notebook_06은 300
 
 ---
 
-## 결과 (학습 후 직접 채워서 제출하세요)
+## 결과
+raw length (boilerplate 포함): 438841
+cleaned length (본문만): 419336
+Frankenstein;
 
-> 아래 표/이미지는 `notebook_07_gpt2.py`를 직접 실행한 뒤,
-> 실제 출력값으로 교체해서 제출하세요.
+or, the Modern Prometheus
 
-- 최종 train loss: `TODO`
-- 최종 val loss: `TODO`
-- 학습 곡선: `loss_curve.png` (아래에 이미지 삽입)
+by Mary Wollstonecraft (Godwin) Shelley
+
+ CONTENTS
+
+ Letter 1
+ Letter 2
+ Letter 3
+ Letter 4
+ Chapter 1
+ Chapter 2
+ Chapter 3
+ Chapter 4
+ Chapter 5
+ Chapter 6
+ Chapter 7
+ Chapter 8
+ Chapter 9
+ Chapter 10
+ Chapter 11
+ Chapter 12
+ Chapter 13
+ Chapter 14
+ Chapt
+
+vocab_size: 83
+train tokens: 377402 | val tokens: 41934
+xb.shape: torch.Size([64, 64]) | yb.shape: torch.Size([64, 64])
+model parameters: 0.82M
+
+epoch  0 | train loss 2.7201 | val loss 2.4095 |   5.9s elapsed
+epoch  1 | train loss 2.3758 | val loss 2.2483 |  12.3s elapsed
+epoch  2 | train loss 2.1933 | val loss 2.0513 |  17.3s elapsed
+epoch  3 | train loss 2.0479 | val loss 1.9232 |  23.0s elapsed
+epoch  4 | train loss 1.9483 | val loss 1.8296 |  27.9s elapsed
+epoch  5 | train loss 1.8739 | val loss 1.7643 |  33.6s elapsed
+epoch  6 | train loss 1.8139 | val loss 1.7133 |  38.6s elapsed
+epoch  7 | train loss 1.7642 | val loss 1.6695 |  43.8s elapsed
+epoch  8 | train loss 1.7248 | val loss 1.6374 |  49.2s elapsed
+epoch  9 | train loss 1.6854 | val loss 1.6126 |  54.2s elapsed
+epoch 10 | train loss 1.6537 | val loss 1.5887 |  59.7s elapsed
+epoch 11 | train loss 1.6239 | val loss 1.5697 |  64.6s elapsed
+epoch 12 | train loss 1.6040 | val loss 1.5497 |  70.1s elapsed
+epoch 13 | train loss 1.5837 | val loss 1.5244 |  74.9s elapsed
+epoch 14 | train loss 1.5620 | val loss 1.5123 |  81.3s elapsed
+
+<img width="691" height="470" alt="gpt2 0그래프" src="https://github.com/user-attachments/assets/a5c9c528-2462-4290-a422-5815a61f343f" />
+
+### 생성 샘플
 
 ```
-![training curve](loss_curve.png)
-```
+It was on a dreary night any educes and the remained which her passed
+away resently the affection of blight, talk me did were resiant of
+which he realing culting poil deaving.”
 
-### 생성 샘플 (prompt: "It was on a dreary night")
-
-```
-TODO: 실행 결과로 교체
+My some, Chapter more deear do tank what he not pleasure resity remain since
+of a feelings feling on on I befection. He
+dowever to pereceived on that vill besidence, but list which from the impoorse that
+attreat ewellected my heart? Saving that h
+saved tinygpt_frankenstein.pt
 ```
 
 ---
 
-## 예상 질문과 답변 (교수님 인터뷰 대비)
+## Q&A
 
 **Q1. GPT 2.0에서 정확히 뭘 바꿨나요?**
 딱 두 가지입니다. (1) 데이터셋을 Tiny Shakespeare에서 Frankenstein으로
 바꿨고, (2) 데이터를 90:10으로 train/val로 나눠서 둘 다 loss를
 추적했습니다. 모델 구조(`Head`, `MultiHeadAttention`, `FeedForward`,
-`Block`, `TinyGPT`)는 notebook 6과 완전히 동일합니다.
+`Block`, `TinyGPT`)는 notebook 6과 동일합니다.
 
-**Q2. 왜 구조를 더 안 바꿨나요?**
-이 과제의 목표가 "다른 데이터셋으로 학습시키고 결과를 제시하는 것"이라서,
-거기에 집중했습니다. 구조까지 바꾸면 어떤 결과가 데이터셋 때문인지,
-어떤 결과가 구조 변경 때문인지 구분하기 어려워집니다.
-
-**Q3. self-attention에서 Q, K, V는 뭔가요?**
+**Q2. self-attention에서 Q, K, V는 뭔가요?**
 같은 입력 벡터를 세 개의 다른 가중치 행렬에 통과시켜 만든 세 가지
 버전입니다. Query는 "지금 무엇을 찾고 있는지", Key는 "각 위치가 무엇을
 갖고 있는지", Value는 "실제로 전달할 정보"입니다. Query와 Key의 내적으로
 유사도(=얼마나 주목할지)를 계산하고, 그 가중치로 Value를 합산합니다.
 
-**Q4. causal mask(`tril`)는 왜 필요한가요?**
+**Q3. causal mask(`tril`)는 왜 필요한가요?**
 언어모델은 "다음 글자 예측"을 학습하는데, 만약 위치 i가 자기보다
 미래(j > i)의 글자를 attention으로 들여다볼 수 있다면, 모델이 정답을
 미리 보고 그대로 베끼는 것과 같아집니다. `tril`(하삼각행렬)로 미래
 위치의 attention 점수를 `-inf`로 만들어서 softmax 후 확률이 0이
 되게 합니다.
 
-**Q5. multi-head는 왜 head 하나로 안 하나요?**
+**Q4. multi-head는 왜 head 하나로 안 하나요?**
 head 하나는 "한 가지 관점"의 관계만 학습합니다. head를 여러 개 두면
 각 head가 서로 다른 종류의 패턴(예: 바로 앞 글자와의 관계, 문장 구조,
 구두점 위치 등)을 독립적으로 학습할 수 있는 여지가 생깁니다. 전체
 차원(`emb_dim`)을 head 수만큼 나눠서 쓰기 때문에 계산량은 head 하나일
 때와 비슷합니다.
 
-**Q6. train/val split을 왜 추가했나요?**
+**Q5. train/val split을 왜 추가했나요?**
 notebook 6은 train loss만 봤는데, train loss는 "모델이 학습 데이터를
 얼마나 잘 외웠는지"만 알려줍니다. val(검증) 데이터는 학습에 전혀 안
 쓰기 때문에, val loss가 같이 떨어지는지를 보면 모델이 실제로 일반화된
 패턴을 배우는지, 그냥 외우는지 구분할 수 있습니다.
 
-**Q7. 생성된 문장이 완벽한 영어가 아닌데 왜 그런가요?**
+**Q6. 생성된 문장이 완벽한 영어가 아닌데 왜 그런가요?**
 이 모델은 (1) 글자(character) 단위로 학습하고, (2) 파라미터가 약
 0.8M밖에 안 되는 아주 작은 모델이고, (3) 학습 데이터도 Frankenstein
 한 권(약 40만 글자)뿐입니다. 실제 GPT-2는 파라미터가 1억~15억 개,
@@ -388,21 +423,21 @@ notebook 6은 train loss만 봤는데, train loss는 "모델이 학습 데이터
 단어처럼 보이는 패턴, 등장인물 이름, 소설 특유의 어휘"가 나오는 정도가
 이 스케일에서 기대할 수 있는 결과입니다.
 
-**Q8. 왜 character 단위로 토큰화했나요? 단어 단위로 하면 안 되나요?**
+**Q7. 왜 character 단위로 토큰화했나요? 단어 단위로 하면 안 되나요?**
 notebook 1부터 이어진 설계라 일관성을 유지했습니다. character 단위는
 vocab 크기가 작아서(보통 60~100개) 구현이 단순하고, 모르는 단어
 ("OOV", out-of-vocabulary) 문제가 없습니다. 단점은 같은 의미를 표현하는
 데 더 많은 토큰이 필요해서 비효율적이라는 점이고, 실제 GPT 계열
 모델들은 BPE 같은 subword tokenization을 사용합니다.
 
-**Q9. residual connection(`x + ...`)이 왜 필요한가요?**
+**Q8. residual connection(`x + ...`)이 왜 필요한가요?**
 layer를 깊게 쌓을수록 gradient가 역전파 과정에서 점점 작아지거나
 불안정해지는 문제가 있습니다(vanishing gradient). 입력을 그대로 더해주는
 경로(residual)가 있으면, 각 layer는 "입력에 무엇을 더할지"만 학습하면
 되고, 최악의 경우에도 입력이 그대로 다음 layer로 전달될 수 있는
 안전한 경로가 생깁니다.
 
-**Q10. Frankenstein을 선택한 이유는?**
+**Q9. Frankenstein을 선택한 이유는?**
 저작권이 만료된 퍼블릭 도메인 텍스트이면서, Tiny Shakespeare(대사+지문
 형식의 극본체)와는 완전히 다른 1인칭 소설체라서, 같은 구조가 다른
 문체에서도 동작하는지 확인하기에 적합하다고 판단했습니다.
