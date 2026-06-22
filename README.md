@@ -8,7 +8,7 @@ notebook 1~6의 흐름을 그대로 보존하고, 마지막에 **GPT 2.0**(noteb
 **GPT 2.0의 정의: notebook 6의 `TinyGPT` 구조를 그대로 가져와서, Tiny
 Shakespeare가 아닌 다른 데이터셋(Frankenstein)으로 학습시키고, 그 결과를
 train/val loss 그래프와 생성 샘플로 보여주는 것.** 구조 자체는 일부러
-바꾸지 않았습니다 — 그 이유는 아래 "왜 구조를 안 바꿨나"에서 설명합니다.
+바꾸지 않았습니다.
 
 ## 프로젝트 구조
 
