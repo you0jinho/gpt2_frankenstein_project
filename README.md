@@ -312,6 +312,7 @@ MAX_STEPS_PER_EPOCH = 200  # notebook_06은 300
 ---
 
 ## 결과
+```
 raw length (boilerplate 포함): 438841
 cleaned length (본문만): 419336
 Frankenstein;
@@ -362,7 +363,7 @@ epoch 11 | train loss 1.6239 | val loss 1.5697 |  64.6s elapsed
 epoch 12 | train loss 1.6040 | val loss 1.5497 |  70.1s elapsed
 epoch 13 | train loss 1.5837 | val loss 1.5244 |  74.9s elapsed
 epoch 14 | train loss 1.5620 | val loss 1.5123 |  81.3s elapsed
-
+```
 <img width="691" height="470" alt="gpt2 0그래프" src="https://github.com/user-attachments/assets/a5c9c528-2462-4290-a422-5815a61f343f" />
 
 ### 생성 샘플
