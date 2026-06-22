@@ -46,7 +46,7 @@ notebook 1~6은 "**구조**를 단계적으로 완성해가는 과정"이고, no
 
 | 항목 | notebook 6 (TinyGPT) | notebook 7 (GPT 2.0) |
 |---|---|---|
-| 모델 구조 (`Head`/`MultiHeadAttention`/`FeedForward`/`Block`/`TinyGPT`) | - | **완전히 동일** (한 글자도 안 바뀜) |
+| 모델 구조 (`Head`/`MultiHeadAttention`/`FeedForward`/`Block`/`TinyGPT`) | - | **동일** |
 | 데이터셋 | Tiny Shakespeare (극본체) | **Frankenstein**, Mary Shelley 1818 (1인칭 소설체) |
 | 평가 방식 | train loss만 출력 | **train/val 90:10 split**, 둘 다 추적해서 그래프로 제시 |
 
@@ -54,14 +54,12 @@ notebook 1~6은 "**구조**를 단계적으로 완성해가는 과정"이고, no
 
 처음에는 weight tying, GELU, learning rate warmup/cosine decay, decoupled
 weight decay 같은 실제 GPT-2의 학습 기법들을 추가하는 버전을 만들었는데,
-**과제 범위에 비해 변경 사항이 너무 많아서** 다시 정리했습니다. 면접에서
-"이 부분 왜 이렇게 했어요?"라는 질문이 나왔을 때, 바뀐 부분이 적을수록
-모든 코드를 자신 있게 설명할 수 있습니다.
+**과제 범위에 비해 변경 사항이 너무 많아서** 다시 정리했습니다.
 
 그래서 GPT 2.0은 **"다른 데이터셋으로 같은 구조를 학습시키고, 그 결과를
 제대로 검증한다"**는 원래 과제 요구사항에만 집중했습니다. 모델 구조
 (`Head`, `MultiHeadAttention`, `FeedForward`, `Block`, `TinyGPT`)는
-notebook 6과 정말로 한 글자도 다르지 않습니다.
+notebook 6과 다르지 않습니다.
 
 ## 데이터셋 출처 및 라이선스
 
@@ -74,7 +72,7 @@ notebook 6과 정말로 한 글자도 다르지 않습니다.
 
 ---
 
-## 코드 상세 설명 (교수님 인터뷰 대비)
+## 코드 상세 설명
 
 `notebook_07_gpt2.py`를 위에서부터 순서대로 설명합니다. 각 섹션은 파일의
 `# %%` 셀과 그대로 대응됩니다.
