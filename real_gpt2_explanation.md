@@ -1,7 +1,7 @@
 # `real_gpt2.0.py` 코드 상세 설명
 
 # GPT2.0 의 여러요소들을 구현해보았습니다. 제출과제는 [`notebook_07_gpt2.py`](./notebook_07_gpt2.py) 이지만 참고하여 주시면 감사하겠습니다.
-> 'real_gpt2.0.py' 의 실행결과는  [`real_gpt2_result.md`](./real_gpt2_result.md)에서 확인해주시면 감사하겠습니다.
+> 'real_gpt2.0.py' 의 실행결과는  [`real_gpt2_results.md`](./real_gpt2_results.md)에서 확인해주시면 감사하겠습니다.
 
 ---
 
