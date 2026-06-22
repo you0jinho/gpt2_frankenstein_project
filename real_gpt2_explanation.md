@@ -1,4 +1,4 @@
-# `real_gpt2.0.py` 코드 상세 설명 (교수님 인터뷰 대비)
+# `real_gpt2.0.py` 코드 상세 설명
 
 이 문서는 `real_gpt2.0.py`를 위에서부터 거의 한 줄씩 따라가면서, **무엇을
 하는 코드인지 / 왜 그렇게 작성했는지 / 다른 방식과 비교하면 어떤지**를
@@ -783,7 +783,7 @@ torch.save(model.state_dict(), "gpt2_mini_frankenstein.pt")
 
 ---
 
-## 예상 질문과 답변
+## Q&A
 
 **Q1. 이 모델이 notebook 6과 가장 크게 다른 점은?**
 구조(attention/residual/layernorm)는 동일하고, "학습 레시피"가
